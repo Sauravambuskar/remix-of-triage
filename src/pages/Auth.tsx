@@ -8,8 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
 import { StackedLogo } from "@/components/StackedLogo";
 import { useToast } from "@/hooks/use-toast";
-import { lovable } from "@/integrations/lovable/index";
-
 export default function Auth() {
   const { user, loading, signIn, signUp } = useAuth();
   const { toast } = useToast();
@@ -35,10 +33,7 @@ export default function Auth() {
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
     try {
-      const { error } = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin });
-      if (error) toast({ title: "Google sign-in failed", description: error.message, variant: "destructive" });
-    } catch (error: any) {
-      toast({ title: "Google sign-in failed", description: error.message, variant: "destructive" });
+      toast({ title: "Google sign-in disabled", description: "Not available", variant: "destructive" });
     } finally {
       setIsGoogleLoading(false);
     }
