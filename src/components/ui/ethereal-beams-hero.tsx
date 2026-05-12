@@ -332,8 +332,13 @@ export default function SaleBridgeHero({
         <div className="flex items-center justify-between gap-4 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl">
           <Link to="/" className="text-white font-semibold tracking-tight text-[15px]">{brand}</Link>
           <div className="hidden md:flex items-center gap-1 px-2 py-1 rounded-full border border-white/10 bg-white/5">
-            {["Product", "Features", "Pricing", "Docs"].map((l) => (
-              <a key={l} href="#" className="px-3 py-1.5 text-[13px] text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors">{l}</a>
+            {[
+              { l: "Services", h: "#services" },
+              { l: "Work", h: "#work" },
+              { l: "Process", h: "#process" },
+              { l: "Contact", h: "#contact" },
+            ].map((it) => (
+              <a key={it.l} href={it.h} className="px-3 py-1.5 text-[13px] text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors">{it.l}</a>
             ))}
           </div>
           <div className="flex items-center gap-2">
