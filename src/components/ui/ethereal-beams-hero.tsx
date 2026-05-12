@@ -388,9 +388,9 @@ export default function SaleBridgeHero({
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
             {[
-              { v: "10k+", l: "Teams" },
-              { v: "40%", l: "Faster MTTR" },
-              { v: "24/7", l: "Sync" },
+              { v: "120+", l: "Projects" },
+              { v: "5x", l: "Avg. ROI" },
+              { v: "40+", l: "Brands" },
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <div className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{s.v}</div>
