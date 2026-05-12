@@ -312,7 +312,7 @@ interface SaleBridgeHeroProps {
 
 const navLinks = [
   { l: "Home", h: "/" },
-  { l: "About Us", h: "https://thesalesbridge.com/about" },
+  { l: "About Us", h: "#about" },
   { l: "Services", h: "#services" },
   { l: "Work", h: "#work" },
   { l: "Contact", h: "#contact" },

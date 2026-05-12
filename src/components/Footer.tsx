@@ -20,7 +20,7 @@ const navigation = [
   {
     heading: "Company",
     items: [
-      { name: "About Us", href: "https://thesalesbridge.com/about" },
+      { name: "About Us", href: "#about" },
       { name: "Our Work", href: "#work" },
       { name: "Case Studies", href: "https://thesalesbridge.com/case-studies" },
       { name: "Blog", href: "https://thesalesbridge.com/blog" },
