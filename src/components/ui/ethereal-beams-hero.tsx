@@ -311,14 +311,14 @@ interface SaleBridgeHeroProps {
 }
 
 export default function SaleBridgeHero({
-  brand = "SaleBridge",
-  badge = "Trusted by industry leaders",
-  headlinePre = "Bug tracking ",
-  headlineAccent = "for teams",
-  headlinePost = " that ship fast",
-  subtitle = "Purpose-built for engineering teams. Triage, track, and resolve issues without slowing down.",
-  primaryCta = { label: "Get started free", to: "/auth" },
-  secondaryCta = { label: "Log in", to: "/auth" },
+  brand = "Ussmai",
+  badge = "Digital agency for ambitious brands",
+  headlinePre = "We design, build & ",
+  headlineAccent = "grow",
+  headlinePost = " brands online.",
+  subtitle = "A full-stack digital agency offering web development, SEO, content marketing, branding and demand generation — built to ship fast and scale further.",
+  primaryCta = { label: "Start a project", to: "/auth" },
+  secondaryCta = { label: "Our work", to: "/projects" },
 }: SaleBridgeHeroProps = {}) {
   return (
     <div className="relative w-full min-h-screen overflow-hidden bg-black">
