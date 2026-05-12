@@ -33,79 +33,59 @@ const Landing = () => {
       {/* Hero — Ethereal Beams */}
       <SaleBridgeHero />
 
-      <section className="relative z-10 pt-24 pb-24 px-6 overflow-hidden">
+      {/* Services */}
+      <section id="services" className="relative z-10 pt-24 pb-24 px-6 overflow-hidden">
         <div className="mx-auto max-w-[1200px] relative">
           <p className="text-[13px] uppercase tracking-[0.15em] text-muted-foreground mb-4">
-            Built for speed
+            What we do
           </p>
-          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-[500] tracking-[-0.03em] text-foreground max-w-[500px] leading-[1.15]">
-            Less process.<br />More progress.
+          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-[500] tracking-[-0.03em] text-foreground max-w-[620px] leading-[1.15]">
+            Five services.<br />One partner for growth.
           </h2>
 
           <div className="mt-16 border border-border">
-            <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  title: "Priority triage",
-                  desc: "Four severity levels. SLA deadlines. One glance tells you what to fix next — and when you're out of time.",
-                  graphic: "bars",
+                  no: "01",
+                  title: "Website Development",
+                  desc: "High-performance websites and web apps engineered for speed, scale and conversion.",
                 },
                 {
-                  title: "Team workflows",
-                  desc: "Assign, reassign, comment, resolve. Every state change leaves a trail. Nothing slips through.",
-                  graphic: "flow",
+                  no: "02",
+                  title: "SEO Services",
+                  desc: "Technical SEO, on-page optimization and authority building that compounds month over month.",
                 },
                 {
-                  title: "Real-time analytics",
-                  desc: "Resolution time. Severity trends. Team velocity. Numbers that tell you something — not dashboards for dashboards' sake.",
-                  graphic: "chart",
+                  no: "03",
+                  title: "Content Marketing",
+                  desc: "Editorial-grade content strategy, writing and distribution that earns trust and traffic.",
                 },
-              ].map((feature, i) => (
+                {
+                  no: "04",
+                  title: "Branding & Marketing",
+                  desc: "Identity systems, messaging and campaigns that make your brand impossible to ignore.",
+                },
+                {
+                  no: "05",
+                  title: "Demand Generation",
+                  desc: "Multi-channel funnels, paid media and lifecycle programs that produce qualified pipeline.",
+                },
+                {
+                  no: "06",
+                  title: "End-to-end Partnership",
+                  desc: "One team across strategy, design, engineering and growth — moving in lockstep with yours.",
+                },
+              ].map((f, i) => (
                 <div
-                  key={feature.title}
-                  className={`p-8 ${i < 2 ? "md:border-r border-border" : ""} ${i > 0 ? "border-t md:border-t-0 border-border" : ""}`}
+                  key={f.title}
+                  className={`p-8 border-border ${i % 3 !== 2 ? "lg:border-r" : ""} ${i % 2 === 0 ? "md:border-r lg:border-r" : "md:border-r-0"} ${i >= 1 ? "border-t md:border-t" : ""} ${i < 3 ? "lg:border-t-0" : "lg:border-t"}`}
                 >
-                  <div className="mb-6 h-32 rounded-lg border border-border bg-card/30 flex items-center justify-center">
-                    <div className="space-y-2 w-full px-6">
-                      {feature.graphic === "bars" && (
-                        <>
-                          {[
-                            { w: "w-full", color: "bg-destructive" },
-                            { w: "w-3/4", color: "bg-warning" },
-                            { w: "w-1/2", color: "bg-primary" },
-                            { w: "w-1/4", color: "bg-success" },
-                          ].map((bar, j) => (
-                            <div key={j} className="flex items-center gap-2">
-                              <div className={`h-2 ${bar.w} rounded-full ${bar.color}`} />
-                            </div>
-                          ))}
-                        </>
-                      )}
-                      {feature.graphic === "flow" && (
-                        <div className="flex items-center justify-between px-2">
-                          {["bg-info", "bg-warning", "bg-success"].map((c, j) => (
-                            <div key={j} className="flex flex-col items-center gap-2">
-                              <div className={`h-8 w-8 rounded-full ${c}`} />
-                              <div className="h-1 w-8 rounded-full bg-muted-foreground/10" />
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                      {feature.graphic === "chart" && (
-                        <div className="flex items-end gap-1.5 h-16 px-2">
-                          {[40, 65, 45, 80, 55, 70, 90].map((h, j) => (
-                            <div key={j} className="relative flex-1 rounded-t border border-border overflow-hidden" style={{ height: `${h}%` }}>
-                              <div className="absolute inset-0" style={{
-                                backgroundImage: `repeating-linear-gradient(-45deg, ${diagonalLineColor} / 0.5) 0px, ${diagonalLineColor} / 0.5) 1px, transparent 1px, transparent 5px)`,
-                              }} />
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <h3 className="text-[15px] font-medium text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-[13px] leading-[1.6] text-muted-foreground">{feature.desc}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-6">
+                    {f.no}
+                  </p>
+                  <h3 className="text-[17px] font-medium text-foreground mb-3 tracking-tight">{f.title}</h3>
+                  <p className="text-[13px] leading-[1.6] text-muted-foreground">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -118,7 +98,6 @@ const Landing = () => {
 
       {/* Social proof */}
       <section className="relative z-10 py-24 px-6 overflow-hidden">
-        {/* Angular line shading background */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -135,13 +114,13 @@ const Landing = () => {
         <div className="mx-auto max-w-[1200px] relative">
           <div className="border border-border bg-background p-10 max-w-[720px] mx-auto">
             <blockquote className="text-[20px] font-[400] leading-[1.5] tracking-[-0.01em] text-foreground/85">
-              "We replaced three tools with one. Mean time to resolution dropped 40% in the first month. The team actually uses it — that's the real win."
+              "Ussmai rebuilt our site, fixed our SEO and ran our launch campaign — organic traffic tripled in 90 days and inbound leads finally became predictable."
             </blockquote>
             <div className="mt-6 flex items-center gap-3">
               <img src={testimonialAvatarAsset.url} alt="Jamie Kim" className="h-8 w-8 rounded-full object-cover" />
               <div>
                 <span className="text-[13px] font-medium text-foreground">Jamie Kim</span>
-                <span className="text-[13px] text-muted-foreground ml-2">Engineering Lead, Acme Corp</span>
+                <span className="text-[13px] text-muted-foreground ml-2">Head of Growth, Acme Corp</span>
               </div>
             </div>
           </div>
@@ -152,20 +131,20 @@ const Landing = () => {
       <div className="relative z-10 w-full border-t border-border" />
 
       {/* CTA */}
-      <section className="relative z-10 pt-32 pb-40 px-6 overflow-hidden">
+      <section id="contact" className="relative z-10 pt-32 pb-40 px-6 overflow-hidden">
         <div className="mx-auto max-w-[1200px] text-center relative">
-          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-[500] tracking-[-0.035em] text-foreground leading-[1.1] mx-auto max-w-[560px]">
-            Your bugs aren't going to track themselves.
+          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-[500] tracking-[-0.035em] text-foreground leading-[1.1] mx-auto max-w-[620px]">
+            Ready to build something worth talking about?
           </h2>
-          <p className="mt-5 text-[15px] text-muted-foreground max-w-[400px] mx-auto">
-            Two minutes to set up. No credit card. No sales call.<br />Just fewer bugs, starting now.
+          <p className="mt-5 text-[15px] text-muted-foreground max-w-[440px] mx-auto">
+            Tell us about your brand, your goals and your timeline.<br />We'll come back with a plan within 48 hours.
           </p>
           <div className="mt-10 flex justify-center">
             <Link to="/auth">
               <button
                 className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 text-[15px] font-medium transition-all duration-200 border border-foreground/40 text-foreground hover:bg-foreground hover:text-background hover:border-foreground"
               >
-                Start tracking now
+                Start a project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
             </Link>
@@ -174,7 +153,9 @@ const Landing = () => {
       </section>
 
       {/* Projects Showcase */}
-      <ProjectsShowcase />
+      <div id="work">
+        <ProjectsShowcase />
+      </div>
 
       {/* Footer */}
       <div className="relative z-10 border-t border-border">

@@ -311,14 +311,14 @@ interface SaleBridgeHeroProps {
 }
 
 export default function SaleBridgeHero({
-  brand = "SaleBridge",
-  badge = "Trusted by industry leaders",
-  headlinePre = "Bug tracking ",
-  headlineAccent = "for teams",
-  headlinePost = " that ship fast",
-  subtitle = "Purpose-built for engineering teams. Triage, track, and resolve issues without slowing down.",
-  primaryCta = { label: "Get started free", to: "/auth" },
-  secondaryCta = { label: "Log in", to: "/auth" },
+  brand = "Ussmai",
+  badge = "Digital agency for ambitious brands",
+  headlinePre = "We design, build & ",
+  headlineAccent = "grow",
+  headlinePost = " brands online.",
+  subtitle = "A full-stack digital agency offering web development, SEO, content marketing, branding and demand generation — built to ship fast and scale further.",
+  primaryCta = { label: "Start a project", to: "/auth" },
+  secondaryCta = { label: "Our work", to: "/projects" },
 }: SaleBridgeHeroProps = {}) {
   return (
     <div className="relative w-full min-h-screen overflow-hidden bg-black">
@@ -332,8 +332,13 @@ export default function SaleBridgeHero({
         <div className="flex items-center justify-between gap-4 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl">
           <Link to="/" className="text-white font-semibold tracking-tight text-[15px]">{brand}</Link>
           <div className="hidden md:flex items-center gap-1 px-2 py-1 rounded-full border border-white/10 bg-white/5">
-            {["Product", "Features", "Pricing", "Docs"].map((l) => (
-              <a key={l} href="#" className="px-3 py-1.5 text-[13px] text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors">{l}</a>
+            {[
+              { l: "Services", h: "#services" },
+              { l: "Work", h: "#work" },
+              { l: "Process", h: "#process" },
+              { l: "Contact", h: "#contact" },
+            ].map((it) => (
+              <a key={it.l} href={it.h} className="px-3 py-1.5 text-[13px] text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors">{it.l}</a>
             ))}
           </div>
           <div className="flex items-center gap-2">
@@ -383,9 +388,9 @@ export default function SaleBridgeHero({
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
             {[
-              { v: "10k+", l: "Teams" },
-              { v: "40%", l: "Faster MTTR" },
-              { v: "24/7", l: "Sync" },
+              { v: "120+", l: "Projects" },
+              { v: "5x", l: "Avg. ROI" },
+              { v: "40+", l: "Brands" },
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <div className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{s.v}</div>
