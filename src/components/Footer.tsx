@@ -42,11 +42,11 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background w-full relative z-10">
 
-      {/* Top section — logo + description + contact */}
-      <div className="mx-auto max-w-7xl px-6 pt-14 pb-8 grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
+      {/* Top section — logo + description + contact + newsletter */}
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-12 grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-8 lg:grid-cols-12">
 
         {/* Logo + tagline */}
-        <div className="col-span-1 lg:col-span-1 flex flex-col gap-5">
+        <div className="col-span-1 lg:col-span-3 flex flex-col gap-5">
           <Link to="/">
             <img
               src="https://thesalesbridge.com/wp-content/uploads/2026/02/Salesbridge-Logo-1024x328.webp"
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
 
         {/* Navigation columns */}
-        <div className="col-span-1 grid grid-cols-3 gap-6 text-sm lg:col-span-1">
+        <div className="col-span-1 lg:col-span-4 grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
           {navigation.map((group) => (
             <div key={group.heading} className="flex flex-col gap-3">
               <p className="font-semibold text-foreground text-xs uppercase tracking-[0.12em]">
@@ -110,7 +110,7 @@ export function Footer() {
         </div>
 
         {/* Contact info */}
-        <div className="col-span-1 flex flex-col gap-5 text-sm">
+        <div className="col-span-1 lg:col-span-2 flex flex-col gap-5 text-sm">
           <p className="font-semibold text-foreground text-xs uppercase tracking-[0.12em]">
             Get in Touch
           </p>
@@ -140,6 +140,30 @@ export function Footer() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 flex flex-col gap-5 text-sm">
+          <p className="font-semibold text-foreground text-xs uppercase tracking-[0.12em]">
+            Newsletter
+          </p>
+          <p className="text-foreground/60 text-xs leading-relaxed">
+            Get the latest insights on digital growth, design trends, and agency news straight to your inbox.
+          </p>
+          <form className="flex flex-col gap-2.5 mt-1" onSubmit={(e) => e.preventDefault()}>
+            <input 
+              type="email" 
+              placeholder="Enter your email address" 
+              className="bg-transparent border border-border rounded-md px-3.5 py-2.5 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-full"
+              required
+            />
+            <button 
+              type="submit"
+              className="bg-foreground text-background border border-foreground rounded-md px-3.5 py-2.5 text-[13px] font-medium hover:bg-transparent hover:text-foreground transition-all w-full"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
 

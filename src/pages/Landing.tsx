@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import testimonialAvatarAsset from "@/assets/testimonial-avatar.jpg.asset.json";
 import { useTheme } from "next-themes";
 import { useEffect } from "react";
 
@@ -12,6 +11,7 @@ import { Gallery4 } from "@/components/blocks/gallery4";
 import { ClientsSection } from "@/components/blocks/clients-section";
 import { FaqAccordion } from "@/components/blocks/faq-accordion";
 import { Features } from "@/components/blocks/features-9";
+import { AboutSection } from "@/components/blocks/about-section";
 
 /** Apply slate accent on mount */
 const SLATE_HSL = "215 16% 47%";
@@ -66,7 +66,7 @@ const Landing = () => {
   const { theme } = useTheme();
 
   const isDark = theme === "dark";
-  const diagonalLineColor = isDark ? "hsl(240 4% 26%" : "hsl(240 4% 80%";
+
 
   useEffect(() => {
     const root = document.documentElement;
@@ -95,34 +95,86 @@ const Landing = () => {
       {/* Full-width divider */}
       <div className="relative z-10 w-full border-t border-border" />
 
+      {/* About Us */}
+      <AboutSection />
+
+      {/* Full-width divider */}
+      <div className="relative z-10 w-full border-t border-border" />
+
       {/* Why Salesbridge — Features Grid */}
       <Features />
 
-      {/* Social proof */}
-      <section className="relative z-10 py-24 px-6 overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              -45deg,
-              ${diagonalLineColor} / 0.55) 0px,
-              ${diagonalLineColor} / 0.55) 1px,
-              transparent 1px,
-              transparent 8px
-            )`,
-            backgroundSize: "100% 100%",
-          }}
-        />
-        <div className="mx-auto max-w-[1200px] relative">
-          <div className="border border-border bg-background p-10 max-w-[720px] mx-auto">
-            <blockquote className="text-[20px] font-[400] leading-[1.5] tracking-[-0.01em] text-foreground/85">
-              "Ussmai rebuilt our site, fixed our SEO and ran our launch campaign — organic traffic tripled in 90 days and inbound leads finally became predictable."
-            </blockquote>
-            <div className="mt-6 flex items-center gap-3">
-              <img src={testimonialAvatarAsset.url} alt="Jamie Kim" className="h-8 w-8 rounded-full object-cover" />
-              <div>
-                <span className="text-[13px] font-medium text-foreground">Jamie Kim</span>
-                <span className="text-[13px] text-muted-foreground ml-2">Head of Growth, Acme Corp</span>
+      {/* Social proof — Testimonials */}
+      <section className="relative z-10 py-20 md:py-28 px-6 bg-background overflow-hidden border-t border-border">
+        <div className="mx-auto max-w-5xl">
+          {/* Label + heading */}
+          <div className="text-center mb-14">
+            <p className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-3">Client Stories</p>
+            <h2 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-[500] tracking-[-0.035em] text-foreground leading-[1.1]">
+              What our clients say
+            </h2>
+          </div>
+
+          {/* Testimonial cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="flex flex-col gap-5 rounded-xl border border-border bg-muted/30 p-6 md:p-8">
+              {/* Stars */}
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 fill-primary text-primary" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                ))}
+              </div>
+              <blockquote className="text-[14px] leading-relaxed text-foreground/80 flex-1">
+                "Salesbridge completely transformed our online presence. Traffic grew 3× in 3 months and our leads became consistent for the first time."
+              </blockquote>
+              <div className="flex items-center gap-3 pt-2 border-t border-border">
+                <div className="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm shrink-0">R</div>
+                <div>
+                  <p className="text-[13px] font-semibold text-foreground">Rahul Sharma</p>
+                  <p className="text-[12px] text-muted-foreground">Founder, OSTREE</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 — highlighted center */}
+            <div className="flex flex-col gap-5 rounded-xl border border-primary/30 bg-primary/5 p-6 md:p-8 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[11px] font-medium px-3 py-0.5 rounded-full">
+                Featured
+              </div>
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 fill-primary text-primary" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                ))}
+              </div>
+              <blockquote className="text-[14px] leading-relaxed text-foreground/80 flex-1">
+                "They rebuilt our site, sorted our SEO and ran our launch campaign — inbound leads became predictable and organic traffic is now our #1 channel."
+              </blockquote>
+              <div className="flex items-center gap-3 pt-2 border-t border-primary/20">
+                <div className="h-9 w-9 rounded-full bg-primary/30 flex items-center justify-center text-primary font-bold text-sm shrink-0">A</div>
+                <div>
+                  <p className="text-[13px] font-semibold text-foreground">Amit Kulkarni</p>
+                  <p className="text-[12px] text-muted-foreground">CEO, Advance FMS</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex flex-col gap-5 rounded-xl border border-border bg-muted/30 p-6 md:p-8">
+              <div className="flex gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="h-4 w-4 fill-primary text-primary" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                ))}
+              </div>
+              <blockquote className="text-[14px] leading-relaxed text-foreground/80 flex-1">
+                "Professional, fast and results-driven. Salesbridge delivered our new platform on time and our patient inquiries doubled within 60 days."
+              </blockquote>
+              <div className="flex items-center gap-3 pt-2 border-t border-border">
+                <div className="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm shrink-0">P</div>
+                <div>
+                  <p className="text-[13px] font-semibold text-foreground">Dr. Priya Limaye</p>
+                  <p className="text-[12px] text-muted-foreground">Director, Limaye Eye Care</p>
+                </div>
               </div>
             </div>
           </div>
@@ -142,14 +194,14 @@ const Landing = () => {
             Tell us about your brand, your goals and your timeline.<br />We'll come back with a plan within 48 hours.
           </p>
           <div className="mt-10 flex justify-center">
-            <Link to="/auth">
+            <a href="mailto:contact@thesalesbridge.com">
               <button
                 className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 text-[15px] font-medium transition-all duration-200 border border-foreground/40 text-foreground hover:bg-foreground hover:text-background hover:border-foreground"
               >
                 Start a project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

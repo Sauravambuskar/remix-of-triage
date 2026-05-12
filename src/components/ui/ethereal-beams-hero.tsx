@@ -311,6 +311,8 @@ interface SaleBridgeHeroProps {
 }
 
 const navLinks = [
+  { l: "Home", h: "/" },
+  { l: "About Us", h: "https://thesalesbridge.com/about" },
   { l: "Services", h: "#services" },
   { l: "Work", h: "#work" },
   { l: "Contact", h: "#contact" },
@@ -387,8 +389,8 @@ export default function SaleBridgeHero({
   headlineAccent = "grow",
   headlinePost = " brands online.",
   subtitle = "A full-stack digital agency offering web development, SEO, content marketing, branding and demand generation — built to ship fast and scale further.",
-  primaryCta = { label: "Start a project", to: "/auth" },
-  secondaryCta = { label: "Our work", to: "/projects" },
+  primaryCta = { label: "Start a project", to: "#contact" },
+  secondaryCta = { label: "Our work", to: "#work" },
 }: SaleBridgeHeroProps = {}) {
   return (
     <div className="relative w-full min-h-screen overflow-hidden bg-black">
