@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 import { StackedLogo } from "@/components/StackedLogo";
+import ProjectsShowcase from "@/components/ProjectsShowcase";
 
 /** Apply slate accent on mount */
 const SLATE_HSL = "215 16% 47%";
@@ -368,6 +369,9 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+      {/* Projects Showcase */}
+      <ProjectsShowcase />
 
       {/* Footer */}
       <div className="relative z-10 border-t border-border">
