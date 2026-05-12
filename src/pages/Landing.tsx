@@ -370,6 +370,9 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Projects Showcase */}
+      <ProjectsShowcase />
+
       {/* Footer */}
       <div className="relative z-10 border-t border-border">
         <div className="mx-auto max-w-[1200px] px-6 py-6 flex items-center justify-between">
