@@ -7,10 +7,60 @@ import { useEffect } from "react";
 import { StackedLogo } from "@/components/StackedLogo";
 import ProjectsShowcase from "@/components/ProjectsShowcase";
 import SaleBridgeHero from "@/components/ui/ethereal-beams-hero";
+import { Footer } from "@/components/Footer";
+import { Gallery4 } from "@/components/blocks/gallery4";
+import { ClientsSection } from "@/components/blocks/clients-section";
+import { FaqAccordion } from "@/components/blocks/faq-accordion";
+import { Features } from "@/components/blocks/features-9";
 
 /** Apply slate accent on mount */
 const SLATE_HSL = "215 16% 47%";
 const SLATE_DARK = "215 14% 55%";
+
+const servicesData = [
+  {
+    id: "web-dev",
+    title: "Website Development",
+    description: "High-performance websites and web apps engineered for speed, scale and conversion.",
+    href: "#contact",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlaumuE0fW0b2LvpBs2oaCIC7wO0MGFalyg&s",
+  },
+  {
+    id: "seo",
+    title: "SEO Services",
+    description: "Technical SEO, on-page optimization and authority building that compounds month over month.",
+    href: "#contact",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR0yThmTRK0P2A5McR9g7cg0a0nNqRl1shMw&s",
+  },
+  {
+    id: "content",
+    title: "Content Marketing",
+    description: "Editorial-grade content strategy, writing and distribution that earns trust and traffic.",
+    href: "#contact",
+    image: "https://wittypen.com/blog/wp-content/uploads/2022/10/Content-marketing-tools-1.jpg",
+  },
+  {
+    id: "branding",
+    title: "Branding & Marketing",
+    description: "Identity systems, messaging and campaigns that make your brand impossible to ignore.",
+    href: "#contact",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbsDZdmT__kd11ZV-fSV6HteeIPHASxAWPnw&s",
+  },
+  {
+    id: "demand-gen",
+    title: "Demand Generation",
+    description: "Multi-channel funnels, paid media and lifecycle programs that produce qualified pipeline.",
+    href: "#contact",
+    image: "https://www.shutterstock.com/image-photo/demand-generation-strategies-shown-using-600nw-2552463863.jpg",
+  },
+  {
+    id: "partnership",
+    title: "End-to-end Partnership",
+    description: "One team across strategy, design, engineering and growth — moving in lockstep with yours.",
+    href: "#contact",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+  },
+];
 
 const Landing = () => {
   const { theme } = useTheme();
@@ -34,67 +84,19 @@ const Landing = () => {
       <SaleBridgeHero />
 
       {/* Services */}
-      <section id="services" className="relative z-10 pt-24 pb-24 px-6 overflow-hidden">
-        <div className="mx-auto max-w-[1200px] relative">
-          <p className="text-[13px] uppercase tracking-[0.15em] text-muted-foreground mb-4">
-            What we do
-          </p>
-          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-[500] tracking-[-0.03em] text-foreground max-w-[620px] leading-[1.15]">
-            Five services.<br />One partner for growth.
-          </h2>
-
-          <div className="mt-16 border border-border">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  no: "01",
-                  title: "Website Development",
-                  desc: "High-performance websites and web apps engineered for speed, scale and conversion.",
-                },
-                {
-                  no: "02",
-                  title: "SEO Services",
-                  desc: "Technical SEO, on-page optimization and authority building that compounds month over month.",
-                },
-                {
-                  no: "03",
-                  title: "Content Marketing",
-                  desc: "Editorial-grade content strategy, writing and distribution that earns trust and traffic.",
-                },
-                {
-                  no: "04",
-                  title: "Branding & Marketing",
-                  desc: "Identity systems, messaging and campaigns that make your brand impossible to ignore.",
-                },
-                {
-                  no: "05",
-                  title: "Demand Generation",
-                  desc: "Multi-channel funnels, paid media and lifecycle programs that produce qualified pipeline.",
-                },
-                {
-                  no: "06",
-                  title: "End-to-end Partnership",
-                  desc: "One team across strategy, design, engineering and growth — moving in lockstep with yours.",
-                },
-              ].map((f, i) => (
-                <div
-                  key={f.title}
-                  className={`p-8 border-border ${i % 3 !== 2 ? "lg:border-r" : ""} ${i % 2 === 0 ? "md:border-r lg:border-r" : "md:border-r-0"} ${i >= 1 ? "border-t md:border-t" : ""} ${i < 3 ? "lg:border-t-0" : "lg:border-t"}`}
-                >
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-6">
-                    {f.no}
-                  </p>
-                  <h3 className="text-[17px] font-medium text-foreground mb-3 tracking-tight">{f.title}</h3>
-                  <p className="text-[13px] leading-[1.6] text-muted-foreground">{f.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="relative z-10 overflow-hidden bg-background">
+        <Gallery4 
+          title="What we do" 
+          description="Five services. One partner for growth."
+          items={servicesData} 
+        />
+      </div>
 
       {/* Full-width divider */}
       <div className="relative z-10 w-full border-t border-border" />
+
+      {/* Why Salesbridge — Features Grid */}
+      <Features />
 
       {/* Social proof */}
       <section className="relative z-10 py-24 px-6 overflow-hidden">
@@ -157,16 +159,17 @@ const Landing = () => {
         <ProjectsShowcase />
       </div>
 
+      {/* Full-width divider */}
+      <div className="relative z-10 w-full border-t border-border" />
+
+      {/* FAQ */}
+      <FaqAccordion />
+
+      {/* Clients — directly above footer */}
+      <ClientsSection />
+
       {/* Footer */}
-      <div className="relative z-10 border-t border-border">
-        <div className="mx-auto max-w-[1200px] px-6 py-6 flex items-center justify-between">
-          <div className="flex items-center gap-2 -ml-0.5">
-            <StackedLogo size={16} />
-            <span className="text-[12px] font-bold text-foreground uppercase tracking-[0.08em]">Triage</span>
-          </div>
-          <span className="text-[12px] text-muted-foreground">© {new Date().getFullYear()}</span>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };

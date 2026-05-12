@@ -59,6 +59,9 @@
     --severity-high: 25 95% 53%;
     --severity-medium: 38 92% 50%;
     --severity-low: 142 70% 40%;
+
+    --gradient-color: #8350e8;
+    --sparkles-color: #8350e8;
   }
 
   .dark {
@@ -112,6 +115,9 @@
     --severity-high: 25 100% 58%;
     --severity-medium: 38 100% 55%;
     --severity-low: 145 100% 50%;
+
+    --gradient-color: #8350e8;
+    --sparkles-color: #ffffff;
   }
 }
 
@@ -138,5 +144,24 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium tracking-tight;
+  }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@layer utilities {
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
   }
 }

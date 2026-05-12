@@ -1,11 +1,11 @@
 import type React from "react";
 import { Link } from "react-router-dom";
-import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo, type FC, type ReactNode } from "react";
+import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo, useState, type FC, type ReactNode } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils.js";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, Menu, X } from "lucide-react";
 
 // ---------- shader extension ----------
 type ExtendMaterialConfig = {
@@ -310,6 +310,76 @@ interface SaleBridgeHeroProps {
   secondaryCta?: { label: string; to: string };
 }
 
+const navLinks = [
+  { l: "Services", h: "#services" },
+  { l: "Work", h: "#work" },
+  { l: "Contact", h: "#contact" },
+];
+
+function NavBar({ primaryCta, secondaryCta }: { primaryCta: { label: string; to: string }; secondaryCta: { label: string; to: string } }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      {/* Pill nav row */}
+      <div className="flex items-center justify-between gap-2 px-4 py-2.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl">
+        {/* Logo */}
+        <Link to="/" className="flex items-center shrink-0">
+          <img
+            src="https://thesalesbridge.com/wp-content/uploads/2026/02/TSB-Logo-White--e1775665924167.webp"
+            alt="Salesbridge"
+            className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
+            style={{ minWidth: 130, maxWidth: 190 }}
+          />
+        </Link>
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-1 px-2 py-1 rounded-full border border-white/10 bg-white/5">
+          {navLinks.map((it) => (
+            <a key={it.l} href={it.h} className="px-3 py-1.5 text-[13px] text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors">
+              {it.l}
+            </a>
+          ))}
+        </div>
+        {/* Right actions */}
+        <div className="flex items-center gap-2">
+          <Link to={primaryCta.to} className="hidden sm:inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-white text-black text-[13px] font-medium hover:bg-white/90 transition-colors">
+            Get Started <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden flex items-center justify-center h-9 w-9 rounded-full border border-white/20 bg-white/10 text-white"
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
+      </div>
+      {/* Mobile dropdown */}
+      {open && (
+        <div className="md:hidden mt-2 rounded-2xl border border-white/15 bg-black/80 backdrop-blur-xl p-4 flex flex-col gap-2">
+          {navLinks.map((it) => (
+            <a
+              key={it.l}
+              href={it.h}
+              onClick={() => setOpen(false)}
+              className="px-4 py-2.5 text-[14px] text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
+            >
+              {it.l}
+            </a>
+          ))}
+          <Link
+            to={primaryCta.to}
+            onClick={() => setOpen(false)}
+            className="mt-1 flex items-center justify-center gap-2 h-10 rounded-xl bg-white text-black text-[14px] font-medium hover:bg-white/90 transition-colors"
+          >
+            Get Started <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function SaleBridgeHero({
   brand = "Ussmai",
   badge = "Digital agency for ambitious brands",
@@ -328,29 +398,8 @@ export default function SaleBridgeHero({
       </div>
 
       {/* Glassmorphic Navbar */}
-      <nav className="absolute top-6 left-1/2 -translate-x-1/2 z-20 w-[min(1200px,calc(100%-32px))]">
-        <div className="flex items-center justify-between gap-4 px-5 py-3 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl">
-          <Link to="/" className="text-white font-semibold tracking-tight text-[15px]">{brand}</Link>
-          <div className="hidden md:flex items-center gap-1 px-2 py-1 rounded-full border border-white/10 bg-white/5">
-            {[
-              { l: "Services", h: "#services" },
-              { l: "Work", h: "#work" },
-              { l: "Process", h: "#process" },
-              { l: "Contact", h: "#contact" },
-            ].map((it) => (
-              <a key={it.l} href={it.h} className="px-3 py-1.5 text-[13px] text-white/80 hover:text-white rounded-full hover:bg-white/10 transition-colors">{it.l}</a>
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <Link to={secondaryCta.to} className="hidden sm:inline-flex h-9 px-3 items-center text-[13px] text-white/80 hover:text-white transition-colors">
-              {secondaryCta.label}
-            </Link>
-            <Link to={primaryCta.to} className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-white text-black text-[13px] font-medium hover:bg-white/90 transition-colors">
-              Get Started
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-        </div>
+      <nav className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-[min(1200px,calc(100%-24px))]">
+        <NavBar primaryCta={primaryCta} secondaryCta={secondaryCta} />
       </nav>
 
       {/* Hero Content */}
