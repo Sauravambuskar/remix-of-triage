@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Moon, Sun } from "lucide-react";
-import { Logo3D } from "@/components/Logo3D";
+import { ArrowRight } from "lucide-react";
 import testimonialAvatarAsset from "@/assets/testimonial-avatar.jpg.asset.json";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { StackedLogo } from "@/components/StackedLogo";
 import ProjectsShowcase from "@/components/ProjectsShowcase";
+import SaleBridgeHero from "@/components/ui/ethereal-beams-hero";
 
 /** Apply slate accent on mount */
 const SLATE_HSL = "215 16% 47%";
