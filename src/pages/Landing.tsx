@@ -30,6 +30,9 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Hero — Ethereal Beams */}
+      <SaleBridgeHero />
+
       {/* Services */}
       <section id="services" className="relative z-10 pt-24 pb-24 px-6 overflow-hidden">
         <div className="mx-auto max-w-[1200px] relative">
